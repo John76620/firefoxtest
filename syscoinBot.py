@@ -32,7 +32,7 @@ class syscoinBot():
         else:'''
         print("Connecté !")
         self.driver.find_element(By.ID, "address").click()
-        self.driver.find_element(By.ID, "address").send_keys("sys1qvuncdxpaavf0zu7m96zsr87fsvpnm4zxvpq482")
+        self.driver.find_element(By.ID, "address").send_keys("sys1qg892etwe6ankkq7lqfj5ftgd36td8h05jjr7pa")
         self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
 
     def already_mined(self):
