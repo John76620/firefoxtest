@@ -15,11 +15,6 @@ class syscoinBot():
         self.driver.quit()
   
     def mine(self):
-        '''host = "127.0.0.1"
-        port = "9150"
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument("--proxy-server=socks5://" + host + ":" + port)
-        self.driver = webdriver.Chrome(chrome_options=chrome_options)'''
         chrome_options = webdriver.ChromeOptions()
         chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
         chrome_options.add_argument("--headless")
@@ -27,9 +22,6 @@ class syscoinBot():
         chrome_options.add_argument("--no-sandbox")
         self.driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
         self.driver.get("https://faucet.syscoin.org/")
-        '''if "faucet.syscoin.org" in self.driver.title:
-            self.quit()
-        else:'''
         print("Connecté !")
         self.driver.find_element(By.ID, "address").click()
         self.driver.find_element(By.ID, "address").send_keys("sys1qg892etwe6ankkq7lqfj5ftgd36td8h05jjr7pa")
@@ -39,20 +31,9 @@ class syscoinBot():
         if self.driver.current_url != "https://faucet.syscoin.org/mine":
             print("IP déjà utilisée !")
             self.quit()
-            return True
         else:
             while (self.driver.current_url == "https://faucet.syscoin.org/mine"):
                 pass
             print("Minage réussi !")
             self.driver.implicitly_wait(3)
-            if (self.driver.current_url != "https://faucet.syscoin.org/mine"):
-                return False
-                self.quit()
-
-    def random_line(self):
-        text = None
-        os.chdir(r'C:\Users\mkel\Downloads\syscoin\selenium')
-        for line in fileinput.input('proxy.txt'):
-            if random.randrange(fileinput.lineno()) == 0:
-                text = line
-        return text
+            self.quit()
