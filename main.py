@@ -2,9 +2,7 @@ import syscoinBot
 
 compteur = 0
 syscoin = syscoinBot.syscoinBot()
-while compteur != 999999:
+while compteur != 1:
     syscoin.mine()
     syscoin.already_mined()
-    if syscoin.already_mined == False:
-        compteur = compteur + 1
     syscoin.quit()
